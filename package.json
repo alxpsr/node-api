@@ -1,0 +1,45 @@
+{
+  "name": "node-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "check-task": "docker-compose -f ./app/docker-compose.yml up",
+    "test": "jest"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      "@babel/plugin-transform-runtime"
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.5",
+    "@babel/eslint-parser": "^7.15.8",
+    "@babel/plugin-transform-runtime": "^7.16.10",
+    "@babel/preset-env": "^7.15.6",
+    "dotenv": "^11.0.0",
+    "eslint": "^8.0.1",
+    "jest": "^27.4.7",
+    "nodemon": "^2.0.13"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "csvtojson": "^2.0.10",
+    "express": "^4.17.1",
+    "injection-js": "^2.4.0",
+    "joi": "^17.4.2",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.7.1",
+    "sequelize": "^6.8.0",
+    "uuid": "^8.3.2",
+    "winston": "^3.3.3"
+  }
+}

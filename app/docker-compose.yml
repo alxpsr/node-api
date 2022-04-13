@@ -1,0 +1,32 @@
+version: '2.1'
+
+services:
+    pg_db:
+        container_name: pg_container
+        image: postgres
+        restart: always
+        environment:
+          - POSTGRES_PASSWORD=root
+          - POSTGRES_USER=root
+          - POSTGRES_DB=test_db
+        volumes:
+          - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+        ports:
+        - ${POSTGRES_PORT:-5432}:5432
+        healthcheck:
+          test: [ "CMD", "pg_isready", "-q", "-d", "test_db", "-U", "root" ]
+          interval: 5s
+          timeout: 5s
+          retries: 5
+    api:
+        container_name: express_user_api
+        build:
+          context: ../
+          dockerfile: ./app/Dockerfile
+        ports:
+          - 3000:3000
+        depends_on:
+          pg_db:
+            condition: "service_healthy"
+        
+        
